@@ -1,0 +1,32 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity stage6 is
+		port(
+				clk, reset, stall: in std_logic;
+				reg3_add_ip: in std_logic_vector(2 downto 0);
+				zero_ip, carry_ip: in std_logic;
+				cond_ip: in std_logic_vector(1 downto 0);
+				pc_ip: in std_logic_vector(15 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				alu_ip: in std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0);
+				reg3_add_op: out std_logic_vector(2 downto 0);
+				reg_enable: out std_logic;
+				data_op: out std_logic_vector(15 downto 0)
+				
+			);
+end entity;
+
+architecture write_back of stage6 is
+		signal data_out: std_logic_vector(15 downto 0);
+		signal pc: std_logic_vector(15 downto 0);
+		signal zero_A, carry_A: std_logic;
+		signal opcode: std_logic_vector(3 downto 0);
+		signal alu_data: std_logic_vector(15 downto 0);
+		
+		begin 
+			
+				
+			

@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity chooser4 is
+  port ( I0, I1,I2,I3 : in std_logic_vector(15 downto 0); C : in std_logic_vector(1 downto 0); Y : out std_logic_vector(15 downto 0));
+end entity chooser4;
+
+architecture Struct of chooser4 is
+ 
+ 
+begin
+  -- component instances
+  muxprocess4 : process(I1,I0,I2,I3,C)
+   begin
+	if (C = '00') then
+		Y <= I0;
+	elsif (C = '01') then	
+		Y <= I1;
+	elsif (C = '10') then	
+		Y <= I1;
+	else 
+		Y <= I4;
+end if;
+end process;
+end Struct;

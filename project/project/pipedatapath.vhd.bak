@@ -1,0 +1,235 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity pipedatapath is
+	port(
+		clk,rst,writevalue: in std_logic;
+		regadd: in std_logic_vector(15 downto 0);
+		aluin: in std_logic_vector(15 downto 0);
+		aluout: out std_logic_vector(15 downto 0);
+		rcin : in std_logic_vector(2 downto 0);
+		rcout: out std_logic_vector(2 downto 0);
+		zin : in std_logic;
+		zout : out std_logic;
+		cin : in std_logic;
+		cout : out std_logic;
+		opin: in std_logic_vector(3 downto 0);
+		opout : out std_logic_vector(3 downto 0)
+		pcin : in std_logic_vector(15 downto 0);
+		pcout : out std_logic_vector(15 downto 0)
+		condin : in std_logic_vector(1 downto 0)
+		condout: out std_logic_vector(1 downto 0);
+		MemDin: in std_logic_vector(16 downto 0);
+		MemDadd: in std_logic_vector(15 downto 0);
+		MemDout : out std_logic_vector(15 downto 0);
+		MemCalu : in std_logic_vector(15 downto 0);
+		MemCpc: in std_logic_vector(15 downto 0);
+		MemCout : out std_logic_vector(15 downto 0)
+	);
+end entity;
+
+architecture pipearch of pipedatapath  is
+
+component stage_1 is
+	port (
+				clk, reset, enable_s1: in std_logic;
+				curr_instr, pc_next: out std_logic_vector(15 downto 0)
+			);
+end component;
+		
+component stage2 is
+ 
+	port(
+		clk,rst,writevalue : in std_logic;
+		pcin : in std_logic_vector(15 downto 0);
+		IRip : in std_logic_vector(15 downto 0);
+		IR15_12 : out std_logic_vector(3 downto 0);
+		IR11_9 : out std_logic_vector(2 downto 0);
+		IR8_6 : out std_logic_vector(2 downto 0);
+		IR5_3 : out std_logic_vector(2 downto 0);
+		IR5_0 : out std_logic_vector(15 downto 0);
+		IR8_0 : out std_logic_vector(15 downto 0);
+		pcout : out std_logic_vector(15 downto 0)
+	);
+end component;
+
+component stage3 is
+	port(
+		clk,rst,writevalue,readvalue : in std_logic;
+		mux1: in std_logic_vector(2 downto 0);
+		mux2 : in std_logic_vector(2 downto 0);
+		mux3 : in std_logic_vector(2 downto 0);
+		rcin : in std_logic_vector(2 downto 0);
+		opin: in std_logic_vector(3 downto 0);
+		imm6in : in std_logic_vector(15 downto 0);
+		imm9in : in std_logic_vector(15 downto 0);
+		regvalue : in std_logic_vector(15 downto 0);
+		pcin : in std_logic_vector(15 downto 0);
+		condin : in std_logic_vector(1 downto 0);
+		regouta: out std_logic_vector(15 downto 0);
+		regoutb: out std_logic_vector(15 downto 0);
+		rcout: out std_logic_vector(2 downto 0);
+		opout: out std_logic_vector(3 downto 0);
+		imm6out: out std_logic_vector(15 downto 0);
+		imm9out: out std_logic_vector(15 downto 0);
+		condout: out std_logic_vector(1 downto 0);
+		pcout : out std_logic_vector(15 downto 0)
+	);
+end component;
+
+component stage_4 is
+		port(
+				clk, reset, stall: in std_logic;
+				reg1_ip, reg2_ip: in std_logic_vector(15 downto 0); 
+				reg3_add_ip: in std_logic_vector(2 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				imm6_ip: in std_logic_vector(15 downto 0);
+				imm9_ip: in std_logic_vector(15 downto 0);
+				pc_ip: in std_logic_vector(15 downto 0);
+				cond_ip: in std_logic_vector(1 downto 0);
+				Rareg_ip: in std_logic_vector(15 downto 0);
+				
+				alu_op: out std_logic_vector(15 downto 0);
+				cond_op: out std_logic_vector(1 downto 0);
+				carry_op, zero_op, eq_op: out std_logic;
+				reg3_add_op: out std_logic_vector(2 downto 0);
+				opcode_op: out std_logic_vector(3 downto 0);
+				Rareg_op: out std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0)
+			);
+end component;
+
+component stage5 is
+	port(
+		clk,rst,writevalue,control: in std_logic;
+		regadd: in std_logic_vector(15 downto 0);
+		aluin : in std_logic_vector(15 downto 0);
+		aluout: out std_logic_vector(15 downto 0);
+		rcin : in std_logic_vector(2 downto 0);
+		rcout: out std_logic_vector(2 downto 0);
+		zin : in std_logic;
+		zout : out std_logic;
+		cin : in std_logic;
+		cout : out std_logic;
+		opin: in std_logic_vector(3 downto 0);
+		opout : out std_logic_vector(3 downto 0);
+		pcin : in std_logic_vector(15 downto 0);
+		pcout : out std_logic_vector(15 downto 0);
+		condin : in std_logic_vector(1 downto 0);
+		condout: out std_logic_vector(1 downto 0)
+	);
+end component;
+
+component stage6 is
+		port(
+				clk, reset, stall: in std_logic;
+				reg3_add_ip: in std_logic_vector(2 downto 0);
+				zero_ip, carry_ip: in std_logic;
+				cond_ip: in std_logic_vector(1 downto 0);
+				pc_ip: in std_logic_vector(15 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				alu_ip: in std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0);
+				reg3_add_op: out std_logic_vector(2 downto 0);
+				reg_enable: out std_logic;
+				data_op: out std_logic_vector(15 downto 0)
+			);
+end component;
+
+component fd_reg is
+		port(
+				clk, reset, writevalue: in std_logic;
+				instr_ip, pc_ip: in std_logic_vector(15 downto 0);
+				instr_op, pc_op: out std_logic_vector(15 downto 0)
+		);
+end component;
+
+component dr_reg is
+		port(
+				clk, reset, writevalue: in std_logic;
+				ra_ip, rb_ip, rc_ip: in std_logic_vector(15 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				cond_ip: in std_logic_vector(1 downto 0);
+				imm6_ip: in std_logic_vector(15 downto 0);
+				imm9_ip: in std_logic_vector(15 downto 0);
+				pc_ip: in std_logic_vector(15 downto 0);
+				ra_op, rb_op, rc_op: out std_logic_vector(15 downto 0);
+				opcode_op: out std_logic_vector(3 downto 0);
+				cond_op: out std_logic_vector(1 downto 0);
+				imm6_op: out std_logic_vector(15 downto 0);
+				imm9_op: out std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0));
+end component;
+
+component re_reg is
+		port(
+				clk, reset, writevalue: in std_logic;
+				reg1_ip, reg2_ip: in std_logic_vector(15 downto 0);
+				reg3_add_ip: in std_logic_vector(2 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				imm6_ip, imm9_ip: in std_logic_vector(15 downto 0);
+				pc_ip: in std_logic_vector(15 downto 0);
+				cond_ip: in std_logic_vector(1 downto 0);
+				reg1_op, reg2_op: out std_logic_vector(15 downto 0);
+				reg3_add_op: out std_logic_vector(2 downto 0);
+				opcode_op: out std_logic_vector(3 downto 0);
+				imm6_op, imm9_op: out std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0);
+				cond_op: out std_logic_vector(1 downto 0)
+			);
+end component;
+
+component em_reg is
+port(clk,reset,writevalue : in std_logic;
+	alu_outip, pc_in: in std_logic_vector(15 downto 0);
+	rc_add_in: in std_logic_vector(2 downto 0);
+	ra_data_in: in std_logic_vector(15 downto 0);
+	z_in,c_in,eq_in: in std_logic;
+	cond_in: in std_logic_vector(1 downto 0);
+	opcode_in: in std_logic_vector(3 downto 0);
+	alu_outop, pc_op: out std_logic_vector(15 downto 0);
+	rc_add_op: out std_logic_vector(2 downto 0);
+	ra_data_op: out std_logic_vector(15 downto 0);
+	z_op,c_op,eq_op: out std_logic;
+	cond_op: out std_logic_vector(1 downto 0);
+	opcode_op: out std_logic_vector(3 downto 0));
+end component;
+
+component mw_reg is
+	port(
+			clk, reset, writevalue: in std_logic;
+			alu_ip: in std_logic_vector(15 downto 0);
+			reg3_add_ip: in std_logic_vector(2 downto 0);
+			zero_ip, carry_ip: in std_logic;
+			opcode_ip: in std_logic_vector(3 downto 0); 
+			pc_ip: in std_logic_vector(15 downto 0);
+			cond_ip: in std_logic_vector(1 downto 0);
+			
+			alu_op: out std_logic_vector(15 downto 0);
+			reg3_add_op: out std_logic_vector(2 downto 0);
+			zero_op, carry_op: out std_logic;
+			opcode_op: out std_logic_vector(3 downto 0);
+			pc_op: out std_logic_vector(15 downto 0);
+			cond_op: out std_logic_vector(1 downto 0)
+		);
+end component;
+
+signal dataout, codeout, MemCmux: std_logic_vector(15 downto 0);
+
+
+
+begin
+	 
+	
+	stage4work : process(opin,condin,imm6in,imm9in,rcin)
+	
+	begin
+	pcout <= pcin;
+	opout <= opin;
+	condout <= condin;
+	rcout <= rcin;
+	MemCout <= codeout;
+	MemDout <= dataout;
+	
+end process;	
+end stage5arch;

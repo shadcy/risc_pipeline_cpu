@@ -1,0 +1,74 @@
+library ieee;
+use ieee.std_logic_1164.all;
+-- The following code is for the stage 2 of the pipeline, it contains a 16 bit instruction
+-- register and a 16 bit signal for transferring pc.
+
+entity stage5 is
+	port(
+		clk,rst,writevalue,control: in std_logic;
+		regadd: in std_logic_vector(15 downto 0);
+		aluin : in std_logic_vector(15 downto 0);
+		aluout: out std_logic_vector(15 downto 0);
+		rcin : in std_logic_vector(2 downto 0);
+		rcout: out std_logic_vector(2 downto 0);
+		zin : in std_logic;
+		zout : out std_logic;
+		cin : in std_logic;
+		cout : out std_logic;
+		opin: in std_logic_vector(3 downto 0);
+		opout : out std_logic_vector(3 downto 0);
+		pcin : in std_logic_vector(15 downto 0);
+		pcout : out std_logic_vector(15 downto 0);
+		condin : in std_logic_vector(1 downto 0);
+		condout: out std_logic_vector(1 downto 0)
+--		MemDin: in std_logic_vector(15 downto 0);
+--		MemDadd: in std_logic_vector(15 downto 0);
+--		
+--		MemCalu : in std_logic_vector(15 downto 0);
+--		MemCpc: in std_logic_vector(15 downto 0);
+--		MemCout : out std_logic_vector(15 downto 0)
+	);
+end entity;
+
+architecture stage5arch of stage5 is
+
+		component chooser2 is
+  			port ( I0, I1 : in std_logic_vector(15 downto 0); Y : out std_logic_vector(15 downto 0); C : in std_logic);
+		end component;
+
+		component memory is
+    		port(clk : in std_logic;
+        		wrt_enable : in std_logic;
+        		reset : in std_logic;
+        		mem_A : in std_logic_vector(15 downto 0);
+        		mem_data_in : in std_logic_vector(15 downto 0);
+        		mem_data_out : out std_logic_vector(15 downto 0));
+			end component;
+		
+	
+--	signal dataout, codeout, MemCmux: std_logic_vector(15 downto 0);
+	
+begin
+	 
+--	Datamemory : memory port map(clk => clk, reset => rst, wrt_enable => writevalue,
+--								 mem_A => MemDadd, mem_data_in => MemDin, mem_data_out => dataout);
+--								 
+--	Codemux : chooser2 port map(I0 => MemCalu, I1 => MemCpc, C => control,  Y => MemCmux);
+
+--	Codememory : memory port map(clk => clk, reset => rst, wrt_enable => '0',
+--								 mem_A => MemCmux, mem_data_in => "0000000000000000", mem_data_out => codeout);
+
+	stage5work : process(opin,condin,rcin,pcin,zin,cin,aluin)
+	
+	begin
+	pcout <= pcin;
+	opout <= opin;
+	condout <= condin;
+	rcout <= rcin;
+--	MemCout <= codeout;
+--	aluout <= dataout;
+	zout <= zin;
+	cout <= cin;
+	aluout <= aluin;
+end process;	
+end stage5arch;

@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+ 
+entity stage_1 is
+	port (
+				clk, reset, enable_s1: in std_logic;
+				curr_instr, pc_next: out std_logic_vector(15 downto 0)
+			);
+end entity;
+
+architecture fetch of stage_1 is
+			component read_memory is
+			port(
+					mem_A : in std_logic_vector(15 downto 0);
+					mem_data_out: out std_logic_vector(15 downto 0)
+					);
+				end component;
+			
+			
+			component alu is
+			port(
+					alu_A, alu_B: in std_logic_vector(15 downto 0);
+					Cin, enable: in std_logic;
+					sel: in std_logic;
+					alu_out: out std_logic_vector(15 downto 0);
+					Cout, Z: out std_logic	
+					);
+				end component;
+				
+	signal pc_inc, pc, instr_store: std_logic_vector(15 downto 0);
+	signal carry_A, zero_A: std_logic;
+	
+	begin
+		read_mem: read_memory port map(mem_A=>pc, mem_data_out=>instr_store);
+		pc_increment: alu port map(alu_A=>pc, alu_B=>"0000000000000001", Cin=>'0', sel=>'0', enable=>'0', alu_out=>pc_inc, Cout=>carry_A, Z=> zero_A);
+		
+		pc_next<= pc;
+		curr_instr<=instr_store;
+		process check(clk, reset, enable_s1)
+			begin
+			if(reset='1') then 
+				pc<="0000000000000000";
+		
+			elsif (clk'event and clk='0' and enable_s1='0') then 
+				if(instr_store(15 downto 15) /= "1") then
+						pc<=pc_inc;
+				end if;
+			end if;
+		end process;
+	end fetch;
+		
+		

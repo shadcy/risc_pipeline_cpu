@@ -1,0 +1,25 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity forwarder is
+    port(
+         st4in,st5in,st6in : in std_logic_vector(15 downto 0);
+         oprr : in std_logic_vector(3 downto 0); 
+			opex: in std_logic_vector(3 downto 0);
+         opma : in std_logic_vector(3 downto 0);
+			sel1:out std_logic_vector(1 downto 0);
+    );     
+end forwarder;
+
+architecture forwarding of forwarder is
+ 
+signal op2,op3,op4,op5 : std_logic_vector(3 downto 0);
+begin
+	op3 <= oprr;
+   op4 <= opex;
+	op5 <= opma;
+	-- possible scenarios are add then ass
+	forwardproc : process()
+		if ()
+end bhv;

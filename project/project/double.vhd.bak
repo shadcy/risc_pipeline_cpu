@@ -1,0 +1,20 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity double is
+	port(
+			A: in std_logic_vector(15 downto 0);
+			B: out std_logic_vector(15 downto 0)
+		);
+end entity;
+
+architecture doublearch of double is
+	signal tempreg: std_logic_vector(15 downto 0);
+	
+	begin
+	B<=tempreg;
+	add: for i in 0 to 15 loop
+			tempreg(i) <= A(i) xor B(i);
+		end loop;
+end architecture;	

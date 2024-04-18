@@ -1,0 +1,44 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vcom -93 -work work {//Mac/Home/Desktop/project/control.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/stage6.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/re_reg.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/mw_reg.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/em.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/dr_reg.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/pipedatapath.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/zeroextender.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/stage5.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/stage3.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/stage2.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/DUT.vhdl}
+vcom -93 -work work {//Mac/Home/Desktop/project/se9_16.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/se7_16.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/regfile.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/read_mem.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/datamem.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/comparator.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/alu.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/first_stage.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/fd_reg.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/stage_4.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/chooser4.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/double.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/increment2.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/forwarder.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/pickone.vhd}
+vcom -93 -work work {//Mac/Home/Desktop/project/branch.vhd}
+
+vcom -93 -work work {/Desktop/project/clock_divider_tb.vhd}
+
+vsim -t 1ps -L altera -L lpm -L sgate -L altera_mf -L altera_lnsim -L fiftyfivenm -L rtl_work -L work -voptargs="+acc"  clock_divider_tb
+
+add wave *
+view structure
+view signals
+run -all

@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+
+entity comparator is
+    port(
+         A : in std_logic_vector(15 downto 0); 
+         B : in std_logic_vector(15 downto 0); 
+			lt: out std_logic;
+         equal : out std_logic 
+    );     
+end comparator;
+
+architecture bhv of comparator is
+ 
+begin
+
+  equal <= '1' when A = B else '0';
+  lt<='1' when A<B else '0';
+
+end bhv;

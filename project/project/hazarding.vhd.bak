@@ -1,0 +1,38 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity hazarding is
+		port(	clk, reset: in std_logic;
+				ex_opcode: in std_logic_vector(3 downto 0);
+				eq, lt: in std_logic;
+				stall_f, stall_d, stall_r, stall_e: out std_logic
+		);
+end entity;
+
+architecture deva_re_deva of hazarding is
+	begin
+	
+	hazard_proc: process(ex_opcode, clk, reset, eq, lt)
+	
+	begin
+		if(reset='0') then
+				stall_f='0';
+				stall_d='0';
+				stall_r='0';
+				stall_e='0';
+		elsif(clk'event and clk='0') then
+				if((opcode="1000" and eq='1') or (opcode="1001" and lt='1') or (opcode="1010" and (lt='1' or eq='1') or (opcode="1100") or (opcode="1101") or (opcode="1111") )then
+					if(eq='1') then
+						stall_f='1';
+						stall_d='1';
+						stall_r='1';
+						stall_e='1';
+					else 
+						stall_f='0';
+						stall_d='0';
+						stall_r='0';
+						stall_e='0';
+					end if;
+				
+				

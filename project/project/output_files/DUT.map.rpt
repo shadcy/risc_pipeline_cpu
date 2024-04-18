@@ -1,0 +1,1029 @@
+Analysis & Elaboration report for DUT
+Sat May 06 02:15:56 2023
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Port Connectivity Checks: "pipedatapath:add_instance|stage6:stage_6"
+  6. Port Connectivity Checks: "pipedatapath:add_instance|stage_4:stage4"
+  7. Port Connectivity Checks: "pipedatapath:add_instance|re_reg:reg3"
+  8. Port Connectivity Checks: "pipedatapath:add_instance|stage3:stage_3|regfile:registerfile"
+  9. Port Connectivity Checks: "pipedatapath:add_instance|fd_reg:reg1"
+ 10. Port Connectivity Checks: "pipedatapath:add_instance|first_stage:stage1|alu:pc_increment"
+ 11. Analysis & Elaboration Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Elaboration Summary                                                   ;
++------------------------------------+---------------------------------------------+
+; Analysis & Elaboration Status      ; Successful - Sat May 06 02:15:56 2023       ;
+; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                      ; DUT                                         ;
+; Top-level Entity Name              ; DUT                                         ;
+; Family                             ; MAX 10                                      ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
+; UFM blocks                         ; N/A until Partition Merge                   ;
+; ADC blocks                         ; N/A until Partition Merge                   ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Elaboration Settings                                                                            ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M25SAE144C8G     ;                    ;
+; Top-level entity name                                            ; DUT                ; DUT                ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|stage6:stage_6"                                                    ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; controlsigout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|stage_4:stage4"                                              ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; flipout ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|re_reg:reg3"                                                 ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; raforw1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; raforw2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|stage3:stage_3|regfile:registerfile" ;
++----------+-------+----------+-------------------------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                                     ;
++----------+-------+----------+-------------------------------------------------------------+
+; write_pc ; Input ; Info     ; Stuck at VCC                                                ;
++----------+-------+----------+-------------------------------------------------------------+
+
+
++-------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|fd_reg:reg1" ;
++------------+-------+----------+-----------------------------------+
+; Port       ; Type  ; Severity ; Details                           ;
++------------+-------+----------+-----------------------------------+
+; writevalue ; Input ; Info     ; Stuck at VCC                      ;
++------------+-------+----------+-----------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipedatapath:add_instance|first_stage:stage1|alu:pc_increment"                              ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; alu_b[15..1] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; alu_b[0]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; cin          ; Input  ; Info     ; Stuck at GND                                                                        ;
+; enable       ; Input  ; Info     ; Stuck at GND                                                                        ;
+; sel          ; Input  ; Info     ; Stuck at GND                                                                        ;
+; cout         ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; z            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Elaboration
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Sat May 06 02:15:48 2023
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off 309project -c DUT --analysis_and_elaboration
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file chooser2.vhd
+    Info (12022): Found design unit 1: chooser2-Struct File: D:/Academics/Sem 4/project/project/chooser2.vhd Line: 8
+    Info (12023): Found entity 1: chooser2 File: D:/Academics/Sem 4/project/project/chooser2.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file control.vhd
+    Info (12022): Found design unit 1: control-behave File: D:/Academics/Sem 4/project/project/control.vhd Line: 12
+    Info (12023): Found entity 1: control File: D:/Academics/Sem 4/project/project/control.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stage6.vhd
+    Info (12022): Found design unit 1: stage6-write_back File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 24
+    Info (12023): Found entity 1: stage6 File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file re_reg.vhd
+    Info (12022): Found design unit 1: re_reg-r_e File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 32
+    Info (12023): Found entity 1: re_reg File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file mw_reg.vhd
+    Info (12022): Found design unit 1: mw_reg-m_w File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 27
+    Info (12023): Found entity 1: mw_reg File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file em.vhd
+    Info (12022): Found design unit 1: em-exec_mem File: D:/Academics/Sem 4/project/project/em.vhd Line: 26
+    Info (12023): Found entity 1: em File: D:/Academics/Sem 4/project/project/em.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file dr_reg.vhd
+    Info (12022): Found design unit 1: dr_reg-d_r File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 27
+    Info (12023): Found entity 1: dr_reg File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file pipedatapath.vhd
+    Info (12022): Found design unit 1: pipedatapath-pipearch File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 10
+    Info (12023): Found entity 1: pipedatapath File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file zeroextender.vhd
+    Info (12022): Found design unit 1: zeroextender-zeroarch File: D:/Academics/Sem 4/project/project/zeroextender.vhd Line: 9
+    Info (12023): Found entity 1: zeroextender File: D:/Academics/Sem 4/project/project/zeroextender.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file tempreg.vhd
+    Info (12022): Found design unit 1: tempreg-arcreg File: D:/Academics/Sem 4/project/project/tempreg.vhd Line: 13
+    Info (12023): Found entity 1: tempreg File: D:/Academics/Sem 4/project/project/tempreg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file structure.vhd
+    Info (12022): Found design unit 1: structure-connection File: D:/Academics/Sem 4/project/project/structure.vhd Line: 18
+    Info (12023): Found entity 1: structure File: D:/Academics/Sem 4/project/project/structure.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stage5.vhd
+    Info (12022): Found design unit 1: stage5-struct File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 29
+    Info (12023): Found entity 1: stage5 File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file stage3.vhd
+    Info (12022): Found design unit 1: stage3-stage3arch File: D:/Academics/Sem 4/project/project/stage3.vhd Line: 39
+    Info (12023): Found entity 1: stage3 File: D:/Academics/Sem 4/project/project/stage3.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file stage2.vhd
+    Info (12022): Found design unit 1: stage2-stage2arch File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 25
+    Info (12023): Found entity 1: stage2 File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file priorityencoder.vhd
+    Info (12022): Found design unit 1: priorityencoder-bhv File: D:/Academics/Sem 4/project/project/priorityencoder.vhd Line: 11
+    Info (12023): Found entity 1: priorityencoder File: D:/Academics/Sem 4/project/project/priorityencoder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file dut.vhdl
+    Info (12022): Found design unit 1: DUT-DutWrap File: D:/Academics/Sem 4/project/project/DUT.vhdl Line: 12
+    Info (12023): Found entity 1: DUT File: D:/Academics/Sem 4/project/project/DUT.vhdl Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file seq_extender.vhd
+    Info (12022): Found design unit 1: seq_ex-design File: D:/Academics/Sem 4/project/project/seq_extender.vhd Line: 9
+    Info (12023): Found entity 1: seq_ex File: D:/Academics/Sem 4/project/project/seq_extender.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file se9_16.vhd
+    Info (12022): Found design unit 1: extend_9_16-design File: D:/Academics/Sem 4/project/project/se9_16.vhd Line: 9
+    Info (12023): Found entity 1: extend_9_16 File: D:/Academics/Sem 4/project/project/se9_16.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file se7_16.vhd
+    Info (12022): Found design unit 1: extend_6_16-design File: D:/Academics/Sem 4/project/project/se7_16.vhd Line: 9
+    Info (12023): Found entity 1: extend_6_16 File: D:/Academics/Sem 4/project/project/se7_16.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file regfile.vhd
+    Info (12022): Found design unit 1: regfile-registers File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 23
+    Info (12023): Found entity 1: regfile File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file read_mem.vhd
+    Info (12022): Found design unit 1: read_memory-behav File: D:/Academics/Sem 4/project/project/read_mem.vhd Line: 13
+    Info (12023): Found entity 1: read_memory File: D:/Academics/Sem 4/project/project/read_mem.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file datamem.vhd
+    Info (12022): Found design unit 1: memory-behav File: D:/Academics/Sem 4/project/project/datamem.vhd Line: 16
+    Info (12023): Found entity 1: memory File: D:/Academics/Sem 4/project/project/datamem.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file comparator.vhd
+    Info (12022): Found design unit 1: comparator-bhv File: D:/Academics/Sem 4/project/project/comparator.vhd Line: 14
+    Info (12023): Found entity 1: comparator File: D:/Academics/Sem 4/project/project/comparator.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file clock_divider_tb.vhd
+    Info (12022): Found design unit 1: clock_divider_tb-bhv File: D:/Academics/Sem 4/project/project/clock_divider_tb.vhd Line: 7
+    Info (12023): Found entity 1: clock_divider_tb File: D:/Academics/Sem 4/project/project/clock_divider_tb.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file alu.vhd
+    Info (12022): Found design unit 1: alu-behav File: D:/Academics/Sem 4/project/project/alu.vhd Line: 16
+    Info (12023): Found entity 1: alu File: D:/Academics/Sem 4/project/project/alu.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file first_stage.vhd
+    Info (12022): Found design unit 1: first_stage-fetch File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 14
+    Info (12023): Found entity 1: first_stage File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file fd_reg.vhd
+    Info (12022): Found design unit 1: fd_reg-f_d File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 13
+    Info (12023): Found entity 1: fd_reg File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file stage_4.vhd
+    Info (12022): Found design unit 1: stage_4-execute File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 34
+    Info (12023): Found entity 1: stage_4 File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file chooser4.vhd
+    Info (12022): Found design unit 1: chooser4-Struct File: D:/Academics/Sem 4/project/project/chooser4.vhd Line: 8
+    Info (12023): Found entity 1: chooser4 File: D:/Academics/Sem 4/project/project/chooser4.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file double.vhd
+    Info (12022): Found design unit 1: double-doublearch File: D:/Academics/Sem 4/project/project/double.vhd Line: 12
+    Info (12023): Found entity 1: double File: D:/Academics/Sem 4/project/project/double.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file lmsm.vhd
+    Info (12022): Found design unit 1: lmsm-archlmsm File: D:/Academics/Sem 4/project/project/lmsm.vhd Line: 15
+    Info (12023): Found entity 1: lmsm File: D:/Academics/Sem 4/project/project/lmsm.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file increment2.vhd
+    Info (12022): Found design unit 1: incrementer2-bhv File: D:/Academics/Sem 4/project/project/increment2.vhd Line: 13
+    Info (12023): Found entity 1: incrementer2 File: D:/Academics/Sem 4/project/project/increment2.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file forwarder.vhd
+    Info (12022): Found design unit 1: forwarder-forwarding File: D:/Academics/Sem 4/project/project/forwarder.vhd Line: 19
+    Info (12023): Found entity 1: forwarder File: D:/Academics/Sem 4/project/project/forwarder.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file pickone.vhd
+    Info (12022): Found design unit 1: pickone-Struct File: D:/Academics/Sem 4/project/project/pickone.vhd Line: 8
+    Info (12023): Found entity 1: pickone File: D:/Academics/Sem 4/project/project/pickone.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file branch.vhd
+    Info (12022): Found design unit 1: branch-bhv File: D:/Academics/Sem 4/project/project/branch.vhd Line: 13
+    Info (12023): Found entity 1: branch File: D:/Academics/Sem 4/project/project/branch.vhd Line: 5
+Info (12127): Elaborating entity "DUT" for the top level hierarchy
+Info (12128): Elaborating entity "pipedatapath" for hierarchy "pipedatapath:add_instance" File: D:/Academics/Sem 4/project/project/DUT.vhdl Line: 21
+Warning (10036): Verilog HDL or VHDL warning at pipedatapath.vhd(286): object "fwra" assigned a value but never read File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 286
+Warning (10036): Verilog HDL or VHDL warning at pipedatapath.vhd(286): object "fwrb" assigned a value but never read File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 286
+Warning (10036): Verilog HDL or VHDL warning at pipedatapath.vhd(290): object "sgrf" assigned a value but never read File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 290
+Info (12128): Elaborating entity "first_stage" for hierarchy "pipedatapath:add_instance|first_stage:stage1" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 295
+Warning (10036): Verilog HDL or VHDL warning at first_stage.vhd(34): object "carry_A" assigned a value but never read File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 34
+Warning (10036): Verilog HDL or VHDL warning at first_stage.vhd(34): object "zero_A" assigned a value but never read File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 34
+Info (12128): Elaborating entity "read_memory" for hierarchy "pipedatapath:add_instance|first_stage:stage1|read_memory:read_mem" File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 37
+Info (12128): Elaborating entity "alu" for hierarchy "pipedatapath:add_instance|first_stage:stage1|alu:pc_increment" File: D:/Academics/Sem 4/project/project/first_stage.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at alu.vhd(25): inferring latch(es) for signal or variable "sumop", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Warning (10631): VHDL Process Statement warning at alu.vhd(25): inferring latch(es) for signal or variable "Cout", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Warning (10631): VHDL Process Statement warning at alu.vhd(25): inferring latch(es) for signal or variable "Z", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Warning (10631): VHDL Process Statement warning at alu.vhd(25): inferring latch(es) for signal or variable "nandop", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[0]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[1]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[2]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[3]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[4]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[5]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[6]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[7]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[8]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[9]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[10]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[11]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[12]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[13]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[14]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "nandop[15]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "Z" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "Cout" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[0]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[1]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[2]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[3]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[4]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[5]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[6]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[7]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[8]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[9]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[10]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[11]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[12]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[13]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[14]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "sumop[15]" at alu.vhd(25) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 25
+Info (10041): Inferred latch for "alu_out[0]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[1]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[2]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[3]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[4]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[5]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[6]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[7]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[8]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[9]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[10]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[11]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[12]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[13]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[14]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (10041): Inferred latch for "alu_out[15]" at alu.vhd(23) File: D:/Academics/Sem 4/project/project/alu.vhd Line: 23
+Info (12128): Elaborating entity "fd_reg" for hierarchy "pipedatapath:add_instance|fd_reg:reg1" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 297
+Warning (10631): VHDL Process Statement warning at fd_reg.vhd(16): inferring latch(es) for signal or variable "instr", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Warning (10631): VHDL Process Statement warning at fd_reg.vhd(16): inferring latch(es) for signal or variable "pc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[0]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[1]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[2]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[3]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[4]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[5]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[6]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[7]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[8]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[9]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[10]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[11]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[12]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[13]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[14]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "pc[15]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[0]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[1]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[2]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[3]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[4]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[5]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[6]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[7]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[8]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[9]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[10]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[11]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[12]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[13]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[14]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (10041): Inferred latch for "instr[15]" at fd_reg.vhd(16) File: D:/Academics/Sem 4/project/project/fd_reg.vhd Line: 16
+Info (12128): Elaborating entity "stage2" for hierarchy "pipedatapath:add_instance|stage2:stage_2" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 299
+Info (12128): Elaborating entity "extend_9_16" for hierarchy "pipedatapath:add_instance|stage2:stage_2|extend_9_16:extend9imm" File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 52
+Info (12128): Elaborating entity "extend_6_16" for hierarchy "pipedatapath:add_instance|stage2:stage_2|extend_6_16:extend6imm" File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 53
+Info (12128): Elaborating entity "zeroextender" for hierarchy "pipedatapath:add_instance|stage2:stage_2|zeroextender:extendzero" File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 54
+Info (12128): Elaborating entity "control" for hierarchy "pipedatapath:add_instance|stage2:stage_2|control:controller" File: D:/Academics/Sem 4/project/project/stage2.vhd Line: 55
+Info (12128): Elaborating entity "dr_reg" for hierarchy "pipedatapath:add_instance|dr_reg:reg2" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 301
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "ra", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "rb", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "rc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "pc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "flip", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "opcode", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "cond", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "imm6", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "imm9", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Warning (10631): VHDL Process Statement warning at dr_reg.vhd(38): inferring latch(es) for signal or variable "controlsig", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[3]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[4]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[5]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[6]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "controlsig[7]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[3]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[4]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[5]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[6]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[7]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[8]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[9]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[10]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[11]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[12]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[13]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[14]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm9[15]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[3]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[4]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[5]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[6]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[7]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[8]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[9]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[10]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[11]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[12]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[13]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[14]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "imm6[15]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "cond[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "cond[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "opcode[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "opcode[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "opcode[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "opcode[3]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "flip" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[3]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[4]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[5]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[6]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[7]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[8]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[9]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[10]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[11]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[12]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[13]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[14]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "pc[15]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rc[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rc[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rc[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rb[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rb[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "rb[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "ra[0]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "ra[1]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (10041): Inferred latch for "ra[2]" at dr_reg.vhd(38) File: D:/Academics/Sem 4/project/project/dr_reg.vhd Line: 38
+Info (12128): Elaborating entity "stage3" for hierarchy "pipedatapath:add_instance|stage3:stage_3" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 303
+Warning (10492): VHDL Process Statement warning at stage3.vhd(99): signal "mux2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: D:/Academics/Sem 4/project/project/stage3.vhd Line: 99
+Info (12128): Elaborating entity "regfile" for hierarchy "pipedatapath:add_instance|stage3:stage_3|regfile:registerfile" File: D:/Academics/Sem 4/project/project/stage3.vhd Line: 79
+Warning (10631): VHDL Process Statement warning at regfile.vhd(81): inferring latch(es) for signal or variable "D1", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Warning (10631): VHDL Process Statement warning at regfile.vhd(81): inferring latch(es) for signal or variable "D2", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[0]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[1]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[2]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[3]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[4]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[5]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[6]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[7]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[8]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[9]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[10]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[11]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[12]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[13]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[14]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2[15]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[0]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[1]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[2]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[3]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[4]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[5]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[6]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[7]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[8]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[9]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[10]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[11]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[12]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[13]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[14]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D1[15]" at regfile.vhd(81) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 81
+Info (10041): Inferred latch for "D2o[0]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[1]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[2]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[3]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[4]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[5]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[6]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[7]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[8]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[9]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[10]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[11]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[12]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[13]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[14]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D2o[15]" at regfile.vhd(79) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 79
+Info (10041): Inferred latch for "D1o[0]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[1]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[2]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[3]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[4]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[5]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[6]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[7]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[8]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[9]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[10]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[11]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[12]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[13]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[14]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (10041): Inferred latch for "D1o[15]" at regfile.vhd(78) File: D:/Academics/Sem 4/project/project/regfile.vhd Line: 78
+Info (12128): Elaborating entity "re_reg" for hierarchy "pipedatapath:add_instance|re_reg:reg3" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 305
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "reg1", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "reg2", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "reg3_add", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "opcode", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "imm6", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "imm9", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "pc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "cond", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "flip", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "ra", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "rb", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Warning (10631): VHDL Process Statement warning at re_reg.vhd(44): inferring latch(es) for signal or variable "controlsig", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "controlsig[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "rb[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "rb[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "rb[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "ra[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "ra[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "ra[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "flip" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "cond[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "cond[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[8]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[9]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[10]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[11]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[12]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[13]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[14]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "pc[15]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[8]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[9]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[10]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[11]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[12]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[13]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[14]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm9[15]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[8]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[9]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[10]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[11]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[12]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[13]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[14]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "imm6[15]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "opcode[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "opcode[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "opcode[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "opcode[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg3_add[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg3_add[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg3_add[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[8]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[9]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[10]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[11]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[12]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[13]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[14]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg2[15]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[0]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[1]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[2]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[3]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[4]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[5]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[6]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[7]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[8]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[9]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[10]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[11]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[12]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[13]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[14]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (10041): Inferred latch for "reg1[15]" at re_reg.vhd(44) File: D:/Academics/Sem 4/project/project/re_reg.vhd Line: 44
+Info (12128): Elaborating entity "stage_4" for hierarchy "pipedatapath:add_instance|stage_4:stage4" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 307
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "a", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "b", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "EN", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "alu_sel", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "alu_op", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "carry", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "pc_op", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Warning (10631): VHDL Process Statement warning at stage_4.vhd(110): inferring latch(es) for signal or variable "doub_A", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[0]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[1]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[2]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[3]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[4]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[5]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[6]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[7]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[8]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[9]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[10]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[11]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[12]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[13]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[14]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "doub_A[15]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[0]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[1]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[2]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[3]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[4]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[5]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[6]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[7]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[8]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[9]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[10]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[11]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[12]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[13]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[14]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "pc_op[15]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "carry" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[0]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[1]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[2]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[3]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[4]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[5]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[6]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[7]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[8]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[9]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[10]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[11]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[12]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[13]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[14]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_op[15]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "alu_sel" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "EN" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[0]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[1]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[2]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[3]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[4]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[5]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[6]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[7]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[8]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[9]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[10]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[11]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[12]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[13]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[14]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "b[15]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[0]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[1]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[2]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[3]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[4]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[5]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[6]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[7]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[8]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[9]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[10]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[11]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[12]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[13]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[14]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (10041): Inferred latch for "a[15]" at stage_4.vhd(110) File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 110
+Info (12128): Elaborating entity "double" for hierarchy "pipedatapath:add_instance|stage_4:stage4|double:doub" File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 104
+Info (12128): Elaborating entity "comparator" for hierarchy "pipedatapath:add_instance|stage_4:stage4|comparator:moreorless" File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 106
+Info (12128): Elaborating entity "incrementer2" for hierarchy "pipedatapath:add_instance|stage_4:stage4|incrementer2:increaser" File: D:/Academics/Sem 4/project/project/stage_4.vhd Line: 108
+Info (12128): Elaborating entity "em" for hierarchy "pipedatapath:add_instance|em:reg4" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 309
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "alu_out", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "z", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "c", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "opcode", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "pc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "ra_data", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "rc_add", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "cond", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Warning (10631): VHDL Process Statement warning at em.vhd(36): inferring latch(es) for signal or variable "controlsig", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[3]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[4]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[5]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[6]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "controlsig[7]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "cond[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "cond[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "rc_add[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "rc_add[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "rc_add[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[3]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[4]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[5]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[6]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[7]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[8]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[9]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[10]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[11]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[12]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[13]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[14]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "ra_data[15]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[3]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[4]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[5]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[6]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[7]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[8]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[9]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[10]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[11]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[12]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[13]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[14]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "pc[15]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "opcode[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "opcode[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "opcode[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "opcode[3]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "c" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "z" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[0]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[1]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[2]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[3]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[4]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[5]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[6]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[7]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[8]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[9]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[10]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[11]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[12]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[13]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[14]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (10041): Inferred latch for "alu_out[15]" at em.vhd(36) File: D:/Academics/Sem 4/project/project/em.vhd Line: 36
+Info (12128): Elaborating entity "stage5" for hierarchy "pipedatapath:add_instance|stage5:stage_5" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 311
+Warning (10631): VHDL Process Statement warning at stage5.vhd(63): inferring latch(es) for signal or variable "memdin", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Warning (10631): VHDL Process Statement warning at stage5.vhd(63): inferring latch(es) for signal or variable "mema", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Warning (10631): VHDL Process Statement warning at stage5.vhd(63): inferring latch(es) for signal or variable "aluout", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[0]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[1]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[2]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[3]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[4]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[5]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[6]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[7]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[8]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[9]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[10]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[11]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[12]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[13]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[14]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "aluout[15]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[0]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[1]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[2]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[3]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[4]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[5]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[6]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[7]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[8]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[9]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[10]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[11]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[12]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[13]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[14]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "mema[15]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[0]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[1]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[2]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[3]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[4]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[5]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[6]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[7]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[8]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[9]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[10]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[11]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[12]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[13]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[14]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (10041): Inferred latch for "memdin[15]" at stage5.vhd(63) File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 63
+Info (12128): Elaborating entity "memory" for hierarchy "pipedatapath:add_instance|stage5:stage_5|memory:Datamemory" File: D:/Academics/Sem 4/project/project/stage5.vhd Line: 53
+Info (12128): Elaborating entity "mw_reg" for hierarchy "pipedatapath:add_instance|mw_reg:reg5" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 313
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "alu", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "reg3_add", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "zero_A", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "carry_A", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "opcode", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "pc", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "cond", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Warning (10631): VHDL Process Statement warning at mw_reg.vhd(37): inferring latch(es) for signal or variable "controlsig", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[2]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[3]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[4]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[5]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[6]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "controlsig[7]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "cond[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "cond[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[2]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[3]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[4]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[5]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[6]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[7]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[8]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[9]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[10]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[11]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[12]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[13]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[14]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "pc[15]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "opcode[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "opcode[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "opcode[2]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "opcode[3]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "carry_A" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "zero_A" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "reg3_add[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "reg3_add[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "reg3_add[2]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[0]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[1]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[2]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[3]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[4]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[5]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[6]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[7]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[8]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[9]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[10]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[11]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[12]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[13]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[14]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (10041): Inferred latch for "alu[15]" at mw_reg.vhd(37) File: D:/Academics/Sem 4/project/project/mw_reg.vhd Line: 37
+Info (12128): Elaborating entity "stage6" for hierarchy "pipedatapath:add_instance|stage6:stage_6" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 315
+Warning (10631): VHDL Process Statement warning at stage6.vhd(32): inferring latch(es) for signal or variable "data_out", which holds its previous value in one or more paths through the process File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[0]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[1]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[2]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[3]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[4]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[5]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[6]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[7]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[8]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[9]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[10]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[11]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[12]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[13]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[14]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (10041): Inferred latch for "data_out[15]" at stage6.vhd(32) File: D:/Academics/Sem 4/project/project/stage6.vhd Line: 32
+Info (12128): Elaborating entity "branch" for hierarchy "pipedatapath:add_instance|branch:branchcheck" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 318
+Info (12128): Elaborating entity "pickone" for hierarchy "pipedatapath:add_instance|pickone:mux1" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 320
+Info (12128): Elaborating entity "forwarder" for hierarchy "pipedatapath:add_instance|forwarder:forwardingunit" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 334
+Info (12128): Elaborating entity "chooser4" for hierarchy "pipedatapath:add_instance|chooser4:forwardmux1" File: D:/Academics/Sem 4/project/project/pipedatapath.vhd Line: 336
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 66 warnings
+    Info: Peak virtual memory: 4780 megabytes
+    Info: Processing ended: Sat May 06 02:15:56 2023
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:18
+
+

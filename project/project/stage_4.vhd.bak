@@ -1,0 +1,56 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity stage_4 is
+		port(
+				reg1_ip, reg2_ip: in std_logic_vector(15 downto 0); 
+				reg3_add_ip: in std_logic_vector(15 downto 0);
+				opcode_ip: in std_logic_vector(3 downto 0);
+				imm6_ip: in std_logic_vector(15 downto 0);
+				imm9_ip: in std_logic_vector(15 downto 0;
+				pc_ip: in std_logic_vector(15 downto 0);
+				cond_ip: in std_logic_vector(1 downto 0);
+				alu_op: out std_logic_vector(15 downto 0);
+				cond_op: out std_logic_vector(1 downto 0);
+				C_out, Z_out, Eq_out: out std_logic;
+				reg3_add_op: out std_logic_vector(15 downto 0);
+				opcode_op: out std_logic_vector(3 downto 0);
+				Rareg_op: out std_logic_vector(15 downto 0);
+				pc_op: out std_logic_vector(15 downto 0)
+			);
+end entity;
+
+architecture execute of stage_4 is
+			component alu is
+			port(
+					alu_A, alu_B: in std_logic_vector(15 downto 0);
+					Cin, enable: in std_logic;
+					sel: in std_logic;
+					alu_out: out std_logic_vector(15 downto 0);
+					Cout, Z: out std_logic	
+					);
+			end component;
+			
+signal reg1, reg2: std_logic_vector(15 downto 0);
+signal reg3_add: std_logic_vector(15 downto 0);
+signal opcode: std_logic_vector(3 downto 0);
+signal pc: std_logic_vector(15 downto 0);
+signal carry_A, zero_A, eq_A: std_logic;
+signal rareg: std_logic_vector(15 downto 0);
+signal cond: std_logic_vector(1 downto 0);
+
+	begin
+	
+		reg1<=reg1_ip;
+		reg2<=reg2_ip;
+		reg3_add<=reg3_add_ip;
+		opcode<=opcode_ip;
+		pc<=pc_ip;
+		rareg<=rareg_ip;
+		cond<=cond_ip;
+		
+	alu_ex: alu port map(alu_A=>)
+
+				
+			
